@@ -55,7 +55,7 @@ alias t='tmux'
 #Networking & IP info
 alias ac='ss -tunap'
 alias nc='ss -tunalp'
-alias Ping='ping -c 25 8.8.8.8'
+alias Ping='ping -c 45 8.8.8.8'
 alias myip='curl ifconfig.me'
 alias lanip='ip a | grep inet'
 
@@ -80,6 +80,9 @@ alias gl='git log --oneline --graph --decorate'
 alias gco='git checkout'
 alias gb='git branch'
 alias gd='git diff'
+alias C=' /home/afhh/cht/cht.sh' # For the utils add /: at the begining of the action.
+alias yt='/usr/bin/youtube-music'
+
 export PATH="$HOME/.local/bin:$PATH"
 # Shell Behavior & EDITOR
 export EDITOR='nvim'
@@ -102,3 +105,7 @@ setopt appendhistory
 source <(COMPLETE=zsh jj)
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
