@@ -11,7 +11,7 @@ return {
     -- Example keymaps (customize to your liking)
     local keymap = vim.keymap.set
     keymap("n", "<leader>a", function()
-      harpoon:list():append()
+      harpoon:list():add()
     end, { desc = "Harpoon Add File" })
     keymap("n", "<leader>h", function()
       harpoon.ui:toggle_quick_menu(harpoon:list())

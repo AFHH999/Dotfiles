@@ -51,6 +51,7 @@ alias G='gemini'
 alias hist='history | grep'
 alias checksec='checksec --file='
 alias t='tmux'
+alias cls='clear'
 
 #Networking & IP info
 alias ac='ss -tunap'
@@ -80,8 +81,10 @@ alias gl='git log --oneline --graph --decorate'
 alias gco='git checkout'
 alias gb='git branch'
 alias gd='git diff'
-alias C=' /home/afhh/cht/cht.sh' # For the utils add /: at the begining of the action.
+alias C=' ~/Code/bash/ChtII.sh' # For the utils add /: at the begining of the action.
 alias yt='/usr/bin/youtube-music'
+alias M='rmpc'
+alias search='sudo pacman -Q | grep'
 
 export PATH="$HOME/.local/bin:$PATH"
 # Shell Behavior & EDITOR
