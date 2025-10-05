@@ -86,6 +86,10 @@ alias yt='/usr/bin/youtube-music'
 alias M='rmpc'
 alias search='sudo pacman -Q | grep'
 
+alias YC="cal -y"
+
+alias zbr="zig build run"
+
 export PATH="$HOME/.local/bin:$PATH"
 # Shell Behavior & EDITOR
 export EDITOR='nvim'
