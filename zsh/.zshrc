@@ -89,6 +89,8 @@ alias search='sudo pacman -Q | grep'
 alias YC="cal -y"
 
 alias zbr="zig build run"
+alias zr="zig run"
+alias nr="2>/dev/null"
 
 export PATH="$HOME/.local/bin:$PATH"
 # Shell Behavior & EDITOR
