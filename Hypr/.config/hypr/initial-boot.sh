@@ -52,17 +52,14 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     # initiate the kb_layout (for some reason) waybar cant launch it
     "$scriptsDir/SwitchKeyboardLayout.sh" >/dev/null 2>&1 &
 
-    #start waybar
-    sleep 2 && waybar >/dev/null 2>&1 &
-
     #Create a maker file to indicate that the script has benn executed
-    touch "$Home/.config/hypr/.initial_startup_done"
+    touch "$HOME/.config/hypr/.initial_startup_done"
 
     # waybar style
-    #if [ -L "$HOME/.config/waybar/config" ]; then
-    ##    	ln -sf "$waybar_style" "$HOME/.config/waybar/style.css"
-    #   	"$scriptsDir/Refresh.sh" > /dev/null 2>&1 &
-    #fi
+    if [ -L "$HOME/.config/waybar/config" ]; then
+        ln -sf "$waybar_style" "$HOME/.config/waybar/style.css"
+        "$scriptsDir/Refresh.sh" >/dev/null 2>&1 &
+    fi
 
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"

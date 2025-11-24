@@ -90,7 +90,12 @@ alias YC="cal -y"
 
 alias zbr="zig build run"
 alias zr="zig run"
-alias nr="2>/dev/null"
+alias nru="2>/dev/null"
+alias cr="cargo run -j 8"
+alias cb="cargo build -j 8"
+alias cbt="export NO_STRIP=1 && cargo tauri build -- -j 8"
+
+alias N="ncdu"
 
 export PATH="$HOME/.local/bin:$PATH"
 # Shell Behavior & EDITOR
