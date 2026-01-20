@@ -35,7 +35,7 @@ alias specs='sudo inxi -Fxz'
 alias audit='sudo lynis audit system'
 alias firewall='sudo systemctl start ufw'
 alias battery='sudo systemctl start auto-cpufreq'
-alias poweroff='shutdown -h now'
+alias OFF='shutdown -h now'
 alias yz='yazi'
 
 #Productivity & Utilities
@@ -51,7 +51,7 @@ alias G='gemini'
 alias hist='history | grep'
 alias checksec='checksec --file='
 alias t='tmux'
-alias cls='clear'
+alias cl='clear'
 
 #Networking & IP info
 alias ac='ss -tunap'
@@ -124,3 +124,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH=$PATH:$(go env GOPATH)/bin
+eval "$(atuin init zsh)"
+
+GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
