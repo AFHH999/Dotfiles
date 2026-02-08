@@ -26,4 +26,4 @@ vim.keymap.set("n", "<leader>de", "<cmd>lua require('dap').terminate()<CR>", { d
 vim.keymap.set("n", "<leader>dr", "<cmd>lua require('dap').run_last()<CR>", { desc = "Debugger run last" })
 
 -- Corrected keymap for rustaceanvim
-vim.keymap.set("n", "<leader>dc", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+vim.keymap.set("n", "<leader>rt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Rust testables" })

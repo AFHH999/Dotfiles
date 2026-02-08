@@ -97,6 +97,8 @@ alias cb="cargo build -j 8"
 alias cbt="export NO_STRIP=1 && cargo tauri build -- -j 8"
 alias N="ncdu"
 
+alias GTT="go test -v -coverprofile=coverage.out ./... && go tool cover -func=coverage.out"
+
 # Trash alias
 alias tp="trash-put"
 alias tl="trash-list"
