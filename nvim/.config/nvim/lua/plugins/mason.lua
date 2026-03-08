@@ -16,13 +16,11 @@ return {
 		event = "VeryLazy",
 		opts = {
 			ensure_installed = {
-				"rust_analyzer", -- install it
 				"lua_ls",
 				"jsonls",
 				"bashls",
 				"marksman",
 				"pylsp",
-				"gopls",
 			},
 			handlers = {
 				-- default setup for everything

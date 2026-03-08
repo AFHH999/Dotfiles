@@ -136,3 +136,4 @@ export PATH=$PATH:$(go env GOPATH)/bin
 eval "$(atuin init zsh)"
 
 GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+if [ -f ~/.zshrc_secrets ]; then source ~/.zshrc_secrets; fi

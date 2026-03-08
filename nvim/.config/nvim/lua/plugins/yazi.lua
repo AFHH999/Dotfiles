@@ -27,6 +27,6 @@ return {
     keymaps = {
       show_help = "<f1>",
     },
-    yazi_floating_window_border = "none",
+    yazi_floating_window_border = "rounded",
   },
 }
