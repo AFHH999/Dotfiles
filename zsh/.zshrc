@@ -82,7 +82,6 @@ alias gco='git checkout'
 alias gb='git branch'
 alias gd='git diff'
 alias C=' ~/Code/bash/ChtII.sh' # For the utils add /: at the begining of the action.
-alias yt='/usr/bin/youtube-music'
 alias M='rmpc'
 alias search='sudo pacman -Q | grep'
 
@@ -94,10 +93,8 @@ alias nru="2>/dev/null"
 
 alias cr="cargo run -j 8"
 alias cb="cargo build -j 8"
-alias cbt="export NO_STRIP=1 && cargo tauri build -- -j 8"
+alias cc="cargo clippy"
 alias N="ncdu"
-
-alias GTT="go test -v -coverprofile=coverage.out ./... && go tool cover -func=coverage.out"
 
 # Trash alias
 alias tp="trash-put"
@@ -137,3 +134,4 @@ eval "$(atuin init zsh)"
 
 GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 if [ -f ~/.zshrc_secrets ]; then source ~/.zshrc_secrets; fi
+export PATH="$HOME/.local/bin:$PATH"
