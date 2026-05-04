@@ -103,6 +103,9 @@ alias tr="trash-restore"
 alias trm="trash-rm"
 alias te="trash-empty"
 
+# To use PowerShell
+alias pw="pwsh"
+
 export PATH="$HOME/.local/bin:$PATH"
 # Shell Behavior & EDITOR
 export EDITOR='nvim'
@@ -135,3 +138,10 @@ eval "$(atuin init zsh)"
 GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 if [ -f ~/.zshrc_secrets ]; then source ~/.zshrc_secrets; fi
 export PATH="$HOME/.local/bin:$PATH"
+
+# bun completions
+[ -s "/home/afhh/.bun/_bun" ] && source "/home/afhh/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
