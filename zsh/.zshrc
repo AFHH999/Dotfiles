@@ -2,29 +2,41 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
-
+typeset -U path # Keep PATH unique (removes duplicates automatically)
 ZSH_THEME="lambda"
 
 plugins=(
-    git
-    archlinux
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+	git
+	archlinux
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# Check archlinux plugin commands here
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/archlinux
+# Shell Behavior & Options
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt APPEND_HISTORY
+bindkey -v
 
-#LS replacement
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# Editor Settings
+export EDITOR='nvim'
+export MANPAGER='nvim +Man! +"set number relativenumber"'
+
+# LS replacement
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
-#System and package management
+# System and package management
 alias update='yay -Syu'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias clean='sudo pacman -Rns'
@@ -38,7 +50,7 @@ alias battery='sudo systemctl start auto-cpufreq'
 alias OFF='shutdown -h now'
 alias yz='yazi'
 
-#Productivity & Utilities
+# Productivity & Utilities
 alias vi='nvim'
 alias zshrc='nvim ~/.zshrc'
 alias reload='source ~/.zshrc'
@@ -52,24 +64,25 @@ alias hist='history | grep'
 alias checksec='checksec --file='
 alias t='tmux'
 alias cl='clear'
+alias docker='podman'
 
-#Networking & IP info
+# Networking & IP info
 alias ac='ss -tunap'
 alias nc='ss -tunalp'
 alias Ping='ping -c 45 8.8.8.8'
 alias myip='curl ifconfig.me'
 alias lanip='ip a | grep inet'
 
-#File navigation
+# File navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 
-#Safety Replacements
+# Safety Replacements
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-#Git
+# Git
 alias g='git'
 alias gs='git status'
 alias ga='git add'
@@ -106,42 +119,68 @@ alias te="trash-empty"
 # To use PowerShell
 alias pw="pwsh"
 
-export PATH="$HOME/.local/bin:$PATH"
-# Shell Behavior & EDITOR
-export EDITOR='nvim'
-export MANPAGER='nvim +Man! +"set number relativenumber"'
+# Expand aliases after sudo
+alias sudo='sudo '
 
-bindkey -v
+# Functions
+function engage(){
+	# 1. Sanity check
+	if [ -z "$1" ]; then
+		echo "Error: missing target name!"
+		echo "usage: engage <target_name>"
+		return 1
+	fi
 
-#History settings
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
+	local TARGET=$1
+	local BASE_DIR="$HOME/CTFs/$TARGET"
+	local OBSIDIAN_NOTE="$BASE_DIR/${TARGET}.md"
 
-# Load external Configs
-# Dart CLI autocompletion
-[[ -f /home/afhh/.dart-cli-completion/zsh-config.zsh ]] && source /home/afhh/.dart-cli-completion/zsh-config.zsh
+	# 2. Build the unified infrastructure
+	mkdir -p "$BASE_DIR"/{nmap,exploits,loot}
 
-# Load API keys or secrets
-[ -f ~/.config/secrets.sh ] && source ~/.config/secrets.sh
+	# 3. Generate the synthesis layer (template)
+	if [ ! -f "$OBSIDIAN_NOTE" ]; then
+		cat <<- EOF > "$OBSIDIAN_NOTE"
+		# TARGET: $TARGET
+		## 1. Enumeration
+		## 2. Foothold
+		## 3. Privilege Escalation
+		EOF
+	fi
+
+	# 4. Deployment
+	cd "$BASE_DIR" || return
+
+	# 5. Recorder
+	echo "[+] CTF workspace ready!"
+	script -q -a "raw_hacking_${TARGET}.log"
+}
+
+# Environment Variables Init
+export GOPATH="$HOME/go"
+export NVM_DIR="$HOME/.nvm"
+export BUN_INSTALL="$HOME/.bun"
+
+# Unified PATH Construction
+# typeset -U path already ensures uniqueness
+export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:/usr/local/go/bin:$GOPATH/bin:$BUN_INSTALL/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
+
+# Load External Configs & Tool Completions
+[[ -f ~/.dart-cli-completion/zsh-config.zsh ]] && source ~/.dart-cli-completion/zsh-config.zsh
 source <(COMPLETE=zsh jj)
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH=$PATH:$(go env GOPATH)/bin
 eval "$(atuin init zsh)"
 
-GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-if [ -f ~/.zshrc_secrets ]; then source ~/.zshrc_secrets; fi
-export PATH="$HOME/.local/bin:$PATH"
+# NVM & Bun loaders
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
-# bun completions
-[ -s "/home/afhh/.bun/_bun" ] && source "/home/afhh/.bun/_bun"
+# Secrets (Loaded last to allow overrides)
+[ -f ~/.config/secrets.sh ] && source ~/.config/secrets.sh
+[ -f ~/.zshrc_secrets ] && source ~/.zshrc_secrets
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by Antigravity CLI installer
+export PATH="/home/afhh/.local/bin:$PATH"
