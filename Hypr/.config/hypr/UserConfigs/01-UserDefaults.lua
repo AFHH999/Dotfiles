@@ -1,0 +1,18 @@
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */ --
+
+-- This is a file where you put your own default apps, default search Engine etc
+-- Set your default editor here uncomment and reboot to take effect. NOTE, this will be
+-- automatically uncommented if you select neovim or vim to your default editor
+hl.env("EDITOR", "nvim") --default editor
+
+-- Define preferred text editor for the KooL Quick Settings Menu (SUPER SHIFT E) script
+-- will take the default EDITOR and nano as fallback
+edit = os.getenv("EDITOR") or "nano"
+
+-- These two are for UserKeybinds.conf & Waybar Modules
+term = "ghostty"
+browser = "firefox"
+files = "nautilus" -- File Manager
+
+-- Default Search Engine for ROFI Search (SUPER S)
+Search_Engine = "https://search.brave.com/search?q=%s"

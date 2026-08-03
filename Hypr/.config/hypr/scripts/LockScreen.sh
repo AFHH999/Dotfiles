@@ -1,7 +1,5 @@
 #!/bin/bash
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 
-# For Hyprlock
-# pidof hyprlock || hyprlock -q
-
-loginctl lock-session
+killall hyprlock 2>/dev/null
+hyprlock

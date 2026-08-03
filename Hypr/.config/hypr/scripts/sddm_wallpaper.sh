@@ -5,7 +5,7 @@
 # for the upcoming changes on the simple_sddm_theme
 
 # variables
-terminal=kitty
+terminal=ghostty
 wallDIR="$HOME/Pictures/wallpapers"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
 wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
@@ -23,9 +23,9 @@ iDIRi="$HOME/.config/swaync/icons"
 # Parse arguments
 mode="effects" # default
 if [[ "$1" == "--normal" ]]; then
-    mode="normal"
+	mode="normal"
 elif [[ "$1" == "--effects" ]]; then
-    mode="effects"
+	mode="effects"
 fi
 
 # Extract colors from rofi wallust config
@@ -41,9 +41,9 @@ foreground=$(grep -oP 'foreground:\s*\K#[A-Fa-f0-9]+' "$rofi_wallust")
 
 # wallpaper to use
 if [[ "$mode" == "normal" ]]; then
-    wallpaper_path="$wallpaper_current"
+	wallpaper_path="$wallpaper_current"
 else
-    wallpaper_path="$wallpaper_modified"
+	wallpaper_path="$wallpaper_modified"
 fi
 
 # Launch terminal and apply changes

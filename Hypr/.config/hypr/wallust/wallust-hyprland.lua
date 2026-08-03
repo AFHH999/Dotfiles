@@ -1,0 +1,21 @@
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+-- /* wallust template - colors-hyprland */
+
+background = "rgb(1E1E1F)"
+foreground = "rgb(FCF8F1)"
+color0 = "rgb(444546)"
+color1 = "rgb(1C1A1E)"
+color2 = "rgb(4A241F)"
+color3 = "rgb(513937)"
+color4 = "rgb(4A424B)"
+color5 = "rgb(80534C)"
+color6 = "rgb(B8B0A2)"
+color7 = "rgb(F2ECE3)"
+color8 = "rgb(A9A59F)"
+color9 = "rgb(262328)"
+color10 = "rgb(623029)"
+color11 = "rgb(6C4C49)"
+color12 = "rgb(625864)"
+color13 = "rgb(AA6F66)"
+color14 = "rgb(F6EAD8)"
+color15 = "rgb(F2ECE3)"

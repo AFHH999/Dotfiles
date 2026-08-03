@@ -37,6 +37,7 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 # System and package management
+alias running=' systemctl list-units --type=service --state=running'
 alias update='yay -Syu'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias clean='sudo pacman -Rns'
@@ -116,6 +117,8 @@ alias tr="trash-restore"
 alias trm="trash-rm"
 alias te="trash-empty"
 
+alias OC="opencode"
+
 # To use PowerShell
 alias pw="pwsh"
 
@@ -184,3 +187,6 @@ eval "$(atuin init zsh)"
 
 # Added by Antigravity CLI installer
 export PATH="/home/afhh/.local/bin:$PATH"
+
+# kimi-code
+export PATH="/home/afhh/.kimi-code/bin:$PATH"
